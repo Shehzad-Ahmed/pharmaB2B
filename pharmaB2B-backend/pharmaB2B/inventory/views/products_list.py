@@ -22,11 +22,11 @@ prepare the report.
 Improve the application if time allows.
 
 Steps:
-create dummy data in stocks and products.   
-test products list API.
+create dummy data in stocks and products.   -
+test products list API. -
 implement add to cart API.  
 implement checkout API.
-implement login API.    
+implement login API. -
 implement FAQ's API.    
 
 Create template of application with React.  
