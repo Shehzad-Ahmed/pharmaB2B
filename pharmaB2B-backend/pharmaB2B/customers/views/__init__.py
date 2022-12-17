@@ -1,0 +1,1 @@
+from pharmaB2B.customers.views.registration import RegistrationViewSet

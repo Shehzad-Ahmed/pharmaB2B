@@ -1,0 +1,1 @@
+from pharmaB2B.inventory.views.products_list import ProductsListViewSet

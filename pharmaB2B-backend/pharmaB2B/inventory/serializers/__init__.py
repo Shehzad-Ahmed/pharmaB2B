@@ -1,0 +1,2 @@
+from pharmaB2B.inventory.serializers.manufacturers import ManufacturersSerializer
+from pharmaB2B.inventory.serializers.products import ProductsListSerializer
