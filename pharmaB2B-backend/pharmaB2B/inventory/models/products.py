@@ -15,8 +15,13 @@ class Products(Base):
 
     units_per_package = models.IntegerField(null=False)
 
-    def get_available_packages(self):
-        return sum(map(lambda stock: stock.available_quantity, self.stocks_set.all()))
+    profit_margin = models.FloatField()
+
+    gst_applicable = models.BooleanField(default=True)
+
+    gst = models.FloatField(default=20)
+
+    primary_image = models.ImageField()
 
     class Meta:
 
@@ -26,3 +31,12 @@ class Products(Base):
 
     def __str__(self):
         return f"{self.name} - {self.id}"
+
+    def get_available_packages(self):
+        return sum(map(lambda stock: stock.available_quantity, self.stocks_set.all()))
+
+    def calculate_price(self):
+        latest_stock_price = self.stocks_set.order_by("-received_on").values_list(
+            "purchase_unit_price", flat=True
+        ).first()
+        return float(latest_stock_price) + (float(latest_stock_price) * self.profit_margin/100) if latest_stock_price else 0

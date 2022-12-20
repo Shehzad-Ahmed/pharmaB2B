@@ -23,7 +23,7 @@ Improve the application if time allows.
 
 Steps:
 create dummy data in stocks and products.   -
-test products list API. -
+test products list API. - (Price In-Stock Image)
 implement add to cart API.  
 implement checkout API.
 implement login API. -

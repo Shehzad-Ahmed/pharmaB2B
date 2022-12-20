@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-class PackageDetailsAdmin(admin.ModelAdmin):
+class ProductStocksAdmin(admin.ModelAdmin):
 
     search_fields = (
         "barcode_number",
@@ -30,3 +30,9 @@ class PackageDetailsAdmin(admin.ModelAdmin):
 
     def product_name(self, instance):
         return instance.stock.product.name
+
+    def expiry_date(self, instance):
+        return instance.stock.expiry_date
+
+    def batch_number(self, instance):
+        return instance.stock.batch_number

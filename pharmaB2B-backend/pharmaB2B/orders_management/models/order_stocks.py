@@ -6,14 +6,21 @@ class OrderStocks(models.Model):
 
     order = models.ForeignKey("orders_management.Orders", null=False, on_delete=models.CASCADE)
 
-    stock = models.ForeignKey("inventory.Stocks", null=False, on_delete=models.CASCADE)
+    product_stock = models.ForeignKey("inventory.ProductStocks", null=False, on_delete=models.CASCADE)
 
-    quantity = models.IntegerField(default=0)
+    booked_on = models.DateTimeField(auto_now_add=True)
+
+    confirmed_on = models.DateTimeField(null=True, default=None)
 
     class Meta:
-        constraints = [
-            CheckConstraint(
-                check=Q(stock__quantity__gte=F('quantity')),
-                name='check_ordered_quantity',
-            ),
-        ]
+
+        unique_together = ("order", "product_stock")
+        # constraints = [
+        #     CheckConstraint(
+        #         check=Q(stock__quantity__gte=F('quantity')),
+        #         name='check_ordered_quantity',
+        #     ),
+        # ]
+
+    # Create a trigger to update the status of product stock.
+    
