@@ -14,10 +14,7 @@ const Product = (props) => {
     let quantity = 0;
     const key = product.id;
     if (key in state.cart.items) {
-      quantity = Math.min(
-        state.cart.items[key].quantity,
-        product.availablePackages
-      );
+      quantity = state.cart.items[key].quantity;
     }
     return quantity;
   };
@@ -27,7 +24,7 @@ const Product = (props) => {
       payload: {
         key: product.id,
         product: product,
-        quantity: getQuantityInCart() + 1,
+        quantity: Math.min(getQuantityInCart() + 1, product.availablePackages),
       },
     });
   };

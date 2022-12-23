@@ -6,7 +6,6 @@ import ProductDetails from './screens/products-detail';
 import { Container } from 'react-bootstrap';
 import ShoppingCart from './screens/shopping-cart';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function App() {
   return (

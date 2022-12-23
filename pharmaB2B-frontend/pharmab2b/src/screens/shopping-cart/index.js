@@ -40,7 +40,9 @@ const ShoppingCart = () => {
     });
   };
   return Object.keys(cartItems).length === 0 ? (
-    <Alert variant="info">Cart is empty, Go Shopping</Alert>
+    <Alert variant="info" style={{ opacity: 1 }}>
+      Cart is empty, Go Shopping
+    </Alert>
   ) : (
     <Row>
       <Col>
