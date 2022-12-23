@@ -1,13 +1,25 @@
 import React from 'react';
-
+import { LOCAL_CURRENCY_SIGN as LCR } from '../../../constants';
 const GSTPrice = (props) => {
   const { basePrice, gstPercent, gstApplicable } = props;
 
-  const calculatePriceIncGST = () => {
-    return gstApplicable ? basePrice + basePrice * gstPercent : basePrice;
-  };
+  const calculatedGST = (basePrice * gstPercent) / 100;
 
-  return <div>{calculatePriceIncGST()}</div>;
+  const calculatedPriceIncGST = gstApplicable
+    ? basePrice + calculatedGST
+    : basePrice;
+
+  return (
+    <div>
+      Base Price: {LCR}
+      {basePrice}{' '}
+      {gstApplicable ? `+ ${calculatedGST} GST (${gstPercent}%)` : '+ No GST'}
+      <div>
+        Final Price: {LCR}
+        {calculatedPriceIncGST}
+      </div>
+    </div>
+  );
 };
 
 export default GSTPrice;

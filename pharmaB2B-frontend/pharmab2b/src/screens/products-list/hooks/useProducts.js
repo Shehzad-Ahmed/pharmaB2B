@@ -3,11 +3,14 @@ import apiCallReducer from '../../../utils/apiCallReducer';
 import getProductsAPI from '../api/productsList';
 
 const useProducts = (defaultValue) => {
-  const [{ loading, error, data }, dispatch] = useReducer(apiCallReducer, {
-    data: [],
-    loading: true,
-    error: '',
-  });
+  const [{ loading, error, data: products }, dispatch] = useReducer(
+    apiCallReducer,
+    {
+      data: [],
+      loading: true,
+      error: '',
+    }
+  );
   useEffect(() => {
     dispatch({ type: 'FETCH_REQUEST' });
     const getProducts = async () => {
@@ -21,7 +24,7 @@ const useProducts = (defaultValue) => {
     getProducts();
   }, []);
 
-  return data;
+  return { products, loading, error };
 };
 
 export default useProducts;

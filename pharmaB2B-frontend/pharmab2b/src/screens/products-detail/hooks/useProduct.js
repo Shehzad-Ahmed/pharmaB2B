@@ -3,18 +3,21 @@ import apiCallReducer from '../../../utils/apiCallReducer';
 import getProductDetails from '../api/productDetails';
 
 const useProduct = (defaultValue, id) => {
-  const [{ loading, error, data }, dispatch] = useReducer(apiCallReducer, {
-    data: defaultValue,
-    loading: true,
-    error: '',
-  });
+  const [{ loading, error, data: product }, dispatch] = useReducer(
+    apiCallReducer,
+    {
+      data: defaultValue,
+      loading: true,
+      error: '',
+    }
+  );
 
   useEffect(() => {
     dispatch({ type: 'FETCH_REQUEST' });
     const getProduct = async (id) => {
       try {
-        const results = await getProductDetails(id);
-        dispatch({ type: 'FETCH_SUCCESS', payload: results.data });
+        const productDetails = await getProductDetails(id);
+        dispatch({ type: 'FETCH_SUCCESS', payload: productDetails });
       } catch (error) {
         dispatch({ type: 'FETCH_FAIL', error: error.message });
       }
@@ -22,7 +25,7 @@ const useProduct = (defaultValue, id) => {
     getProduct(id);
   }, [id]);
 
-  return data;
+  return { product, loading, error };
 };
 
 export default useProduct;

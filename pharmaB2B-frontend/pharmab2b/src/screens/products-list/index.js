@@ -1,11 +1,17 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import Product from './components/product';
+import { Alert, Col, Row } from 'react-bootstrap';
+import LoadingIndicator from '../../components/LoadingIndicator';
+import Product from './components/Product';
 import useProducts from './hooks/useProducts';
 
 export default function ProductsList() {
-  const products = useProducts([]);
-  return (
+  const { products, loading, error } = useProducts({});
+
+  return loading ? (
+    <LoadingIndicator className="align-content-center" />
+  ) : error ? (
+    <Alert variant="danger">{error}</Alert>
+  ) : (
     <div>
       <h1>Products</h1>
       <Row>
