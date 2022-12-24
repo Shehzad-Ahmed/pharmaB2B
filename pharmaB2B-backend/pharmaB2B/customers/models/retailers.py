@@ -18,4 +18,4 @@ class Retailers(Base):
     verified = models.BooleanField(default=False)
 
     # System field
-    verified_on = models.DateTimeField(null=False)
+    verified_on = models.DateTimeField(null=True)

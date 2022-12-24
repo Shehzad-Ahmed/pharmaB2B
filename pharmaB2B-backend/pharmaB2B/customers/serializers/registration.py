@@ -10,8 +10,6 @@ from drf_writable_nested.serializers import WritableNestedModelSerializer
 
 class RegistrationSerializer(WritableNestedModelSerializer):
 
-    user = UsersSerializer()
-
     shop_name = serializers.CharField(source="name")
 
     class Meta:
@@ -21,3 +19,12 @@ class RegistrationSerializer(WritableNestedModelSerializer):
         exclude = ("verified", "verified_on", "name")
 
         read_only_fields = ("id", "created_on", "updated_on", "deleted")
+
+    def create(self, validated_data):
+        users = self.initial_data.pop("users")
+        retailer = super().create(validated_data)
+        ser = UsersSerializer(data=users)
+        ser.is_valid(raise_exception=True)
+        ser.validated_data["retailer"] = retailer
+        ser.save()
+        return retailer
