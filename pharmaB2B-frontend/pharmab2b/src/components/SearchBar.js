@@ -8,7 +8,7 @@ const SearchBar = (props) => {
   const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
-    navigate(query ? `${currentPath}/?q=${query}` : `/${currentPath}`);
+    navigate(query ? `/${currentPath}/?q=${query}` : `/${currentPath}`);
   };
 
   return (

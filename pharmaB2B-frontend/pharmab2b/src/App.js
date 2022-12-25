@@ -9,6 +9,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './screens/home/Home';
 import Registration from './screens/registration/Registration';
+import FAQs from './screens/faqs/FAQs';
+import ContactUs from './screens/contact-us/ContactUs';
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
             <Route path="register/" element={<Registration />}></Route>
             <Route path="product/:id" element={<ProductDetails />}></Route>
             <Route path="cart/" element={<ShoppingCart />}></Route>
+            <Route path="faqs/" element={<FAQs />}></Route>
+            <Route path="contact-us" element={<ContactUs />}></Route>
           </Routes>
         </main>
       </div>

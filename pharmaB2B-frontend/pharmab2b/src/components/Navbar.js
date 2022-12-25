@@ -34,6 +34,12 @@ const MyNavbar = () => {
                 {Object.keys(state.cart.items).length}
               </Badge>
             </Link>
+            <Link to="/faqs" className="nav-link">
+              FAQs
+            </Link>
+            <Link to="/contact-us" className="nav-link">
+              Help
+            </Link>
             <NavDropdown title={userDetails.first_name} id="basic-nav-dropdown">
               <Link to="/orderhistory">
                 <NavDropdown.Item>Order History</NavDropdown.Item>
@@ -52,6 +58,12 @@ const MyNavbar = () => {
           <Nav className="me-auto">
             <Link to="/register" className="nav-link">
               Register
+            </Link>
+            <Link to="/faqs" className="nav-link">
+              FAQs
+            </Link>
+            <Link to="/contact-us" className="nav-link">
+              Help
             </Link>
           </Nav>
         )}
