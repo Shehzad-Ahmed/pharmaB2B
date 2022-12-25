@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import apiCallReducer from '../../../utils/apiCallReducer';
-import getProductsAPI from '../api/productsList';
+import useAxios from '../../../utils/useAxios';
 
 const useProducts = (defaultValue) => {
   const [{ loading, error, data: products }, dispatch] = useReducer(
@@ -11,11 +11,12 @@ const useProducts = (defaultValue) => {
       error: '',
     }
   );
+  const api = useAxios();
   useEffect(() => {
     dispatch({ type: 'FETCH_REQUEST' });
     const getProducts = async () => {
       try {
-        const results = await getProductsAPI();
+        const results = await api.get('api/inventory/products/');
         dispatch({ type: 'FETCH_SUCCESS', payload: results.data });
       } catch (error) {
         dispatch({ type: 'FETCH_FAIL', error: error.message });

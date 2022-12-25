@@ -1,6 +1,18 @@
 const storeReducer = (state, action) => {
   const cartItems = state.cart.items;
   switch (action.type) {
+    case 'USER_LOG_IN':
+      localStorage.setItem('userDetails', JSON.stringify(action.payload));
+      return {
+        ...state,
+        userDetails: { ...action.payload },
+      };
+    case 'USER_LOG_OUT':
+      localStorage.setItem('userDetails', null);
+      return {
+        ...state,
+        userDetails: null,
+      };
     case 'ADD_ITEM_TO_CART':
       cartItems[action.payload.key] = {
         product: action.payload.product,
