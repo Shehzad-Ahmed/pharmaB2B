@@ -1,6 +1,7 @@
 """
 Serializers for registration process.
 """
+from django.db import transaction
 from rest_framework import serializers
 
 from pharmaB2B.core.serializers import UsersSerializer
@@ -16,15 +17,20 @@ class RegistrationSerializer(WritableNestedModelSerializer):
 
         model = Retailers
 
-        exclude = ("verified", "verified_on", "name")
+        exclude = ("status", "verified_on", "name")
 
-        read_only_fields = ("id", "created_on", "updated_on", "deleted")
+        read_only_fields = ("id", "created_on", "updated_on", "deleted", "created_by")
 
     def create(self, validated_data):
         users = self.initial_data.pop("users")
-        retailer = super().create(validated_data)
-        ser = UsersSerializer(data=users)
-        ser.is_valid(raise_exception=True)
-        ser.validated_data["retailer"] = retailer
-        ser.save()
+        # Since Retailer instance has to be created by a user
+        # and user needs to be registered with a retailer
+        with transaction.atomic():
+            retailer = Retailers(**validated_data)
+            ser = UsersSerializer(data=users)
+            ser.is_valid(raise_exception=True)
+            ser.validated_data["retailer"] = retailer
+            user = ser.save()
+            retailer.created_by = user
+            retailer.save(update_fields=("created_by", ))
         return retailer

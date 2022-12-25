@@ -196,6 +196,7 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+    'TOKEN_OBTAIN_SERIALIZER': 'pharmaB2B.core.serializers.UserTokenObtainPairSerializer',
 }
 
 # Actual directory user files go to
@@ -209,3 +210,18 @@ CORS_ALLOWED_ORIGINS = [
     "localhost:3000",
     "http://localhost:3000"
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = env("EMAIL_HOST")
+
+EMAIL_PORT = env("EMAIL_PORT")
+
+EMAIL_ENCRYPTION = env("EMAIL_ENCRYPTION")
+
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+
+EMAIL_USE_TLS = True
+

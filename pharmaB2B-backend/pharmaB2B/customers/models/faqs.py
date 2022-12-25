@@ -13,3 +13,8 @@ class FAQs(Base):
     question = models.TextField()
 
     answer = models.TextField()
+
+    class Meta:
+
+        verbose_name = "FAQ"
+        verbose_name_plural = "FAQs"

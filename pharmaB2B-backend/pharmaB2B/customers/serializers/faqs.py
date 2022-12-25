@@ -1,9 +1,12 @@
 from rest_framework import serializers
 
+from pharmaB2B.customers.models import FAQs
+
 
 class FAQsSerializer(serializers.ModelSerializer):
 
     class Meta:
+        model = FAQs
 
         fields = "__all__"
 

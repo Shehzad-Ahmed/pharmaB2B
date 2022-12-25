@@ -4,6 +4,8 @@ from pharmaB2B.core.models import Base
 
 class Retailers(Base):
 
+    created_by = models.ForeignKey("core.Users", on_delete=models.CASCADE)
+
     name = models.TextField(null=False)
 
     address = models.TextField(null=False, default="")
@@ -15,7 +17,13 @@ class Retailers(Base):
     license_number = models.TextField(null=False)
 
     # System field
-    verified = models.BooleanField(default=False)
+    status = models.TextField(
+        choices=(("not-decided", "not-decided"), ("verified", "verified"), ("rejected", "rejected")),
+        default="not-decided"
+    )
 
     # System field
     verified_on = models.DateTimeField(null=True)
+
+    # System field
+    rejection_reason = models.TextField(default="", blank=True)
