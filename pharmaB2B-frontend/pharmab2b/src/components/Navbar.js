@@ -40,6 +40,9 @@ const MyNavbar = () => {
             <Link to="/contact-us" className="nav-link">
               Help
             </Link>
+            <Link to="/about-us" className="nav-link">
+              About us
+            </Link>
             <NavDropdown title={userDetails.first_name} id="basic-nav-dropdown">
               <Link to="/orderhistory">
                 <NavDropdown.Item>Order History</NavDropdown.Item>
@@ -64,6 +67,9 @@ const MyNavbar = () => {
             </Link>
             <Link to="/contact-us" className="nav-link">
               Help
+            </Link>
+            <Link to="/about-us" className="nav-link">
+              About us
             </Link>
           </Nav>
         )}

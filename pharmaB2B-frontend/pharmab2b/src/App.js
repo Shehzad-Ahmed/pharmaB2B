@@ -11,6 +11,7 @@ import Home from './screens/home/Home';
 import Registration from './screens/registration/Registration';
 import FAQs from './screens/faqs/FAQs';
 import ContactUs from './screens/contact-us/ContactUs';
+import AboutUs from './screens/about-us/AboutUs';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="cart/" element={<ShoppingCart />}></Route>
             <Route path="faqs/" element={<FAQs />}></Route>
             <Route path="contact-us" element={<ContactUs />}></Route>
+            <Route path="about-us" element={<AboutUs />}></Route>
           </Routes>
         </main>
       </div>

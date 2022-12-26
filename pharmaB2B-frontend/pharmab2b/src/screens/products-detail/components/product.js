@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
 import { LOCAL_CURRENCY_SIGN as LCR } from '../../../constants';
 import { Store } from '../../../store/StoreProvider';
-import Availability from './Availability';
+import Availability from '../../../components/Availability';
 import GSTPrice from './GSTPrice';
 import PackagingDetails from './PackagingDetails';
 

@@ -8,7 +8,7 @@ const Availability = (props) => {
 
   return inStock ? (
     <div>
-      <Badge bg="success">In Stock: {availablePackages}</Badge>
+      <Badge bg="success">In Stock: {availablePackages}</Badge>{' '}
       <Badge>In Cart: {quantityInCart}</Badge>
     </div>
   ) : (
