@@ -1,0 +1,1 @@
+from pharmaB2B.orders_management.serializers.orders import OrdersSerializer

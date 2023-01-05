@@ -25,20 +25,11 @@ prepare the report.
 Improve the application if time allows.
 
 Steps:
-create dummy data in stocks and products.   -
 implement add to cart API.  
 implement checkout API.
-implement FAQ's API.    
 
 Create template of application with React.  
 Create dashboard page.
 
-
-add customers in django admin panel.
-send email to user upon verification.
 Create set password page.
-
-Add details to product page.
-Implement frequently asked questions page.
-Implement Contact us Page.
 """

@@ -23,6 +23,7 @@ from pharmaB2B import settings
 urlpatterns = [
     path("api/customers/", include("pharmaB2B.customers.urls")),
     path("api/inventory/", include("pharmaB2B.inventory.urls")),
+    path("api/orders-management/", include("pharmaB2B.orders_management.urls")),
     path('api/token/', views.TokenObtainPairView.as_view(), name='token-obtain-pair'),
     path('api/token/refresh/', views.TokenRefreshView.as_view(), name='token-refresh'),
     path('admin/', admin.site.urls),

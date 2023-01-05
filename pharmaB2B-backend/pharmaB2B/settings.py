@@ -17,7 +17,7 @@ import environ
 from pathlib import Path
 
 env = environ.Env(
-    SECRET_KEY=(str, 'it-is-dev-environment-bitch'),
+    SECRET_KEY=(str, 'it-is-dev-environment-man'),
     DEBUG=(bool, False),
     USE_HTTPS_IN_RESET_PASSWORD=(bool, False)
 )

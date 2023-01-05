@@ -19,6 +19,6 @@ class ProductStocks(Base):
 
     class Meta:
 
-        verbose_name = "Package Detail"
+        verbose_name = "Product Stock"
 
-        verbose_name_plural = "Packages Detail"
+        verbose_name_plural = "Product Stocks"

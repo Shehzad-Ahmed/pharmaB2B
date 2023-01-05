@@ -27,3 +27,10 @@ class Retailers(Base):
 
     # System field
     rejection_reason = models.TextField(default="", blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Retailer"
+        verbose_name_plural = "Retailers"
