@@ -23,7 +23,7 @@ export default function Product(props) {
       payload: {
         key: product.id,
         product: product,
-        quantity: Math.min(getQuantityInCart() + 1, product.available_packages),
+        quantity: Math.min(getQuantityInCart() + 1, product.availablePackages),
       },
     });
   };
@@ -32,7 +32,7 @@ export default function Product(props) {
     <Card>
       <Link to={`/product/${product.id}`}>
         <img
-          src={product.image_url}
+          src={product.imageUrl}
           className="card-img-top"
           alt={product.name}
         />
@@ -44,10 +44,12 @@ export default function Product(props) {
         <Card.Text>
           {product.type} Price: {LCR}
           {product.price}
-          <Availability
-            availablePackages={product.available_packages}
-            quantityInCart={getQuantityInCart()}
-          ></Availability>
+          <div>
+            <Availability
+              availablePackages={product.availablePackages}
+              quantityInCart={getQuantityInCart()}
+            ></Availability>
+          </div>
         </Card.Text>
         <Button onClick={addProductToCart}>Add to Cart</Button>
       </Card.Body>

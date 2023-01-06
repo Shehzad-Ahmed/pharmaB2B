@@ -1,7 +1,8 @@
 import React from 'react';
-import { Col, ListGroup, Row } from 'react-bootstrap';
+import { Badge, Col, ListGroup, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import { LOCAL_CURRENCY_SIGN } from '../../../constants';
 
 const CartItem = (props) => {
   const {
@@ -26,23 +27,28 @@ const CartItem = (props) => {
         <Col md={3}>
           <Button
             onClick={() => {
-              increaseQuantityHandler(product);
-            }}
-            variant="light"
-          >
-            <i className="fa fa-plus-circle"></i>
-          </Button>
-          <span>{quantity}</span>
-          <Button
-            onClick={() => {
               decreaseQuantityHandler(product);
             }}
             variant="light"
           >
             <i className="fa fa-minus-circle"></i>
           </Button>
+          <span>{quantity}</span>
+          <Button
+            onClick={() => {
+              increaseQuantityHandler(product);
+            }}
+            variant="light"
+          >
+            <i className="fa fa-plus-circle"></i>
+          </Button>
+          {'   '}
+          <Badge>In Stock: {product.availablePackages}</Badge>
         </Col>
-        <Col md={3}>{product.price}</Col>
+        <Col md={3}>
+          {LOCAL_CURRENCY_SIGN}
+          {product.price}
+        </Col>
         <Col md={2}>
           <Button
             onClick={() => {

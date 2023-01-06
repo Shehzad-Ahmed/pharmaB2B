@@ -36,6 +36,14 @@ const storeReducer = (state, action) => {
           items: { ...updatedCartItems },
         },
       };
+    case 'EMPTY_CART_ITEMS':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          items: {},
+        },
+      };
     default:
       return state;
   }

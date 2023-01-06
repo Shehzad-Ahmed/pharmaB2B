@@ -8,7 +8,10 @@ import {
   ListGroup,
   Row,
 } from 'react-bootstrap';
+import { toast } from 'react-toastify';
+import { LOCAL_CURRENCY_SIGN } from '../../constants';
 import { Store } from '../../store/StoreProvider';
+import useAxios from '../../utils/useAxios';
 import CartItem from './components/CartItem';
 
 const ShoppingCart = () => {
@@ -28,13 +31,39 @@ const ShoppingCart = () => {
     });
   };
 
+  const api = useAxios();
+  const requstOrderHandler = async () => {
+    try {
+      let orderDetails = [];
+      for (const key in cartItems) {
+        orderDetails.push({
+          product: cartItems[key].product,
+          quantity: cartItems[key].quantity,
+        });
+      }
+      const response = await api.post(
+        '/api/orders-management/orders/request/',
+        {
+          payment_mode: 'full',
+          details: orderDetails,
+        }
+      );
+      contextDispatch({ type: 'EMPTY_CART_ITEMS' });
+      toast.success(
+        `Your order has been placed with id ${response.data.id}, hurray !!`
+      );
+    } catch (error) {
+      toast.error('The order could not be placed. Revise your order quantity');
+    }
+  };
+
   const decreaseQuantityHandler = (product) => {
     contextDispatch({
       type: 'ADD_ITEM_TO_CART',
       payload: {
         key: product.id,
         product: product,
-        quantity: Math.max(cartItems[product.id].quantity - 1, 0),
+        quantity: Math.max(cartItems[product.id].quantity - 1, 1),
       },
     });
   };
@@ -47,6 +76,20 @@ const ShoppingCart = () => {
       },
     });
   };
+  const getPriceAndGST = () => {
+    let price = 0;
+    let gst = 0;
+    for (const key in cartItems) {
+      const p = cartItems[key].product;
+      price += cartItems[key].quantity * p.price;
+      gst += p.gstApplicable
+        ? cartItems[key].quantity * p.price * (p.gst / 100)
+        : 0;
+    }
+    return [price, gst];
+  };
+  const [totalPrice, totalGST] = getPriceAndGST();
+
   return (
     <Container className="main-container">
       {Object.keys(cartItems).length === 0 ? (
@@ -78,7 +121,13 @@ const ShoppingCart = () => {
               <Card.Body>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
-                    <h3>Price</h3>
+                    <h5>
+                      {LOCAL_CURRENCY_SIGN}
+                      {totalPrice} + {LOCAL_CURRENCY_SIGN}
+                      {Number(totalGST.toFixed(2))}
+                      {' GST'}
+                      <h3>Total: {Number(totalPrice + totalGST).toFixed(2)}</h3>
+                    </h5>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <div className="d-grid">
@@ -86,8 +135,9 @@ const ShoppingCart = () => {
                         type="button"
                         variant="primary"
                         disabled={cartItems.length === 0}
+                        onClick={requstOrderHandler}
                       >
-                        Proceed to Checkout
+                        Request Order
                       </Button>
                     </div>
                   </ListGroup.Item>
