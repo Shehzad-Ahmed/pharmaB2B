@@ -3,6 +3,8 @@ import string
 
 from django.utils import timezone
 
+from pharmaB2B import settings
+
 
 def get_datetime():
     return timezone.now()
@@ -18,3 +20,7 @@ def generate_random_password():
     for i in range(pwd_length):
         pwd += ''.join(secrets.choice(alphabet))
     return pwd
+
+
+def get_delivery_date():
+    return get_datetime() + settings.DELIVERY_DATE_INTERVAL

@@ -19,7 +19,8 @@ from pathlib import Path
 env = environ.Env(
     SECRET_KEY=(str, 'it-is-dev-environment-man'),
     DEBUG=(bool, False),
-    USE_HTTPS_IN_RESET_PASSWORD=(bool, False)
+    USE_HTTPS_IN_RESET_PASSWORD=(bool, False),
+    DELIVERY_DATE_INTERVAL=(int, 604800)
 )
 
 
@@ -225,3 +226,4 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 EMAIL_USE_TLS = True
 
+DELIVERY_DATE_INTERVAL = timedelta(seconds=int(env("DELIVERY_DATE_INTERVAL")))

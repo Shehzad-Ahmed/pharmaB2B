@@ -3,6 +3,7 @@ from django.db import models, transaction
 from pharmaB2B import constants
 from pharmaB2B.constants import ORDER_STATUS_PENDING
 from pharmaB2B.core.models import Base
+from pharmaB2B.utils import get_delivery_date
 
 
 class Orders(Base):
@@ -29,6 +30,8 @@ class Orders(Base):
     # Adding the raw details here, in case the order gets cancelled,
     # then customer can see it order history.
     raw_details = models.JSONField(default=dict)
+
+    expected_delivery_date = models.DateField(default=get_delivery_date)
 
     class Meta:
 
