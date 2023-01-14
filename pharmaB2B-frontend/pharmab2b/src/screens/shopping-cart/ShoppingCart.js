@@ -53,7 +53,8 @@ const ShoppingCart = () => {
         `Your order has been placed with id ${response.data.id}, hurray !!`
       );
     } catch (error) {
-      toast.error('The order could not be placed. Revise your order quantity');
+      console.log(error);
+      toast.error(error.response.data.message);
     }
   };
 

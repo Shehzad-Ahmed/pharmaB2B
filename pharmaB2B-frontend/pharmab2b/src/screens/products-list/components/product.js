@@ -35,6 +35,7 @@ export default function Product(props) {
           src={product.imageUrl}
           className="card-img-top"
           alt={product.name}
+          style={{ height: '25vh' }}
         />
       </Link>
       <Card.Body>
@@ -42,7 +43,9 @@ export default function Product(props) {
           <Card.Title>{product.name}</Card.Title>
         </Link>
         <Card.Text>
-          {product.type} Price: {LCR}
+          {product.type}
+          <br />
+          Price: {LCR}
           {product.price}
           <div>
             <Availability

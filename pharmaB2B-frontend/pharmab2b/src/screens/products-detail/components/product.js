@@ -37,6 +37,7 @@ const Product = (props) => {
             src={product.imageUrl}
             alt={product.name}
             className="img-large"
+            style={{ maxWidth: '40vw', maxHeight: '60vh' }}
           ></img>
         </Col>
         <Col md={3}>

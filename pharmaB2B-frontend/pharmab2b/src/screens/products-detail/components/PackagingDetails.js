@@ -6,8 +6,8 @@ const PackagingDetails = (props) => {
   return (
     <div>
       <Row>
-        <Col>{type} per Box:</Col>
-        <Col>{unitsPerPackage}</Col>
+        <Col>{type}</Col>
+        <Col>Per Box: {unitsPerPackage}</Col>
       </Row>
       <Row>
         <Col>Packaging Type: </Col>
