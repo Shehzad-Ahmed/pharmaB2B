@@ -9,16 +9,15 @@
 ## 1. Backend Setup
 
 **1.1**
-Generate python virtual env.
+Generate python virtual env outside the project directory.
 ```bash
 python -m venv env
 ```
 
 **1.2**
-activate the virtual env.
-
+Activate the virtual env.
 ```bash
-Source env/bin/activate
+Source path/env/bin/activate
 ```
 
 **1.2**
@@ -46,7 +45,7 @@ source set_env
 ```
 
 **1.6**
-Go to pharmaB2B-backend folder. Execute migrations
+Go to /pharmaB2B-backend/ folder. Execute migrations
 ***1.7***
 ```bash
 python manage.py migrate
@@ -55,11 +54,17 @@ python manage.py migrate
 **1.7**
 .Data setup instructions.
 
+**1.8**
+The "mediafiles" folder is used to store files e.g. uploaded images of products, if it does not exist then
+create it on root of project. /pharmaB2B/
+```bash
+touch mediafiles
+```
 
 ## Frontend Setup
 
 **2.1**
-Go to the pharmaB2B-frontend/pharmab2b/
+Go to the /pharmaB2B-frontend/pharmab2b/
 
 **2.2**
 Execute the following commands to install dependencies.
