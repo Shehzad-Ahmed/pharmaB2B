@@ -10,6 +10,10 @@ class Suppliers(Base):
 
     contact_no = PhoneNumberField(null=False, region="GB")
 
+    email = models.EmailField(null=False, blank=True, default="")
+
+    address = models.TextField(null=False, blank=True, default="")
+
     class Meta:
 
         verbose_name = "Supplier"

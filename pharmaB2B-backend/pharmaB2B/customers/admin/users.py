@@ -7,7 +7,7 @@ class UsersAdmin(admin.ModelAdmin):
         "first_name",
         "last_name",
         "email",
-        "retailer",
+        "retailer__name",
     )
 
     list_filter = ("is_active", "deleted", "is_staff")

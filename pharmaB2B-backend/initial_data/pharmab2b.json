@@ -1,0 +1,135 @@
+[
+{
+    "model": "core.users",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$lJtNV1YzzUJQZzB6DUtHh3$U+vZjX10n95iM/gNFsRj5e6A8hNrJqpzU+F4FM0LrRw=",
+        "last_login": "2023-01-14T14:17:51Z",
+        "is_superuser": false,
+        "first_name": "Sales",
+        "last_name": "Person",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-01-14T14:17:46Z",
+        "created_on": "2023-01-14T14:18:25.259Z",
+        "updated_on": "2023-01-14T14:18:25.259Z",
+        "deleted": false,
+        "email": "sales.person@pharmab2b.co",
+        "retailer": "bff5f11c-947f-4823-b697-9b48bac16f21",
+        "groups": [
+            [
+                "Sales Manager"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "core.users",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$lJtNV1YzzUJQZzB6DUtHh3$U+vZjX10n95iM/gNFsRj5e6A8hNrJqpzU+F4FM0LrRw=",
+        "last_login": "2023-01-14T14:15:50Z",
+        "is_superuser": false,
+        "first_name": "Support",
+        "last_name": "Person",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-01-14T14:15:44Z",
+        "created_on": "2023-01-14T14:16:33.460Z",
+        "updated_on": "2023-01-14T14:18:37.503Z",
+        "deleted": false,
+        "email": "customer.person@pharmab2b.co",
+        "retailer": "bff5f11c-947f-4823-b697-9b48bac16f21",
+        "groups": [
+            [
+                "Customer Support"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "core.users",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$lJtNV1YzzUJQZzB6DUtHh3$U+vZjX10n95iM/gNFsRj5e6A8hNrJqpzU+F4FM0LrRw=",
+        "last_login": "2023-01-14T12:45:31.057Z",
+        "is_superuser": true,
+        "first_name": "PharmaB2B",
+        "last_name": "Admin",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-12-19T18:40:58.595Z",
+        "created_on": "2022-12-19T18:40:58.708Z",
+        "updated_on": "2022-12-25T13:18:56.370Z",
+        "deleted": false,
+        "email": "admin@pharmab2b.co",
+        "retailer": "bff5f11c-947f-4823-b697-9b48bac16f21",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "core.users",
+    "fields": {
+        "password": "pbkdf2_sha256$390000$lJtNV1YzzUJQZzB6DUtHh3$U+vZjX10n95iM/gNFsRj5e6A8hNrJqpzU+F4FM0LrRw=",
+        "last_login": "2023-01-14T14:14:05Z",
+        "is_superuser": false,
+        "first_name": "Inventory",
+        "last_name": "Person",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-01-14T14:10:29Z",
+        "created_on": "2023-01-14T14:11:37.049Z",
+        "updated_on": "2023-01-14T14:18:45.534Z",
+        "deleted": false,
+        "email": "inventory.person@pharmab2b.co",
+        "retailer": "bff5f11c-947f-4823-b697-9b48bac16f21",
+        "groups": [
+            [
+                "Inventory Manager"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "customers.retailers",
+    "pk": "bff5f11c-947f-4823-b697-9b48bac16f21",
+    "fields": {
+        "created_on": "2022-12-19T18:40:53.022Z",
+        "updated_on": "2022-12-25T13:15:28.069Z",
+        "deleted": false,
+        "created_by": [
+            "admin@pharmab2b.co"
+        ],
+        "name": "PharmaB2B",
+        "address": "PharmaB2B, Hill Street",
+        "postal_code": "ST4 1NL",
+        "city": "Stoke-On-Trent",
+        "license_number": "LICENSE-123456789",
+        "status": "verified",
+        "verified_on": "2022-12-19T18:40:53Z",
+        "rejection_reason": ""
+    }
+},
+{
+    "model": "customers.faqs",
+    "pk": 1,
+    "fields": {
+        "created_on": "2022-12-25T17:18:30.748Z",
+        "updated_on": "2022-12-25T17:21:28.344Z",
+        "question": "I have registered, what will happen next?",
+        "answer": "Our team will verify the details provided in registration process, and once the verification process is complete you will receive confirmation email."
+    }
+},
+{
+    "model": "customers.faqs",
+    "pk": 2,
+    "fields": {
+        "created_on": "2022-12-25T17:24:03.713Z",
+        "updated_on": "2022-12-25T17:24:03.713Z",
+        "question": "Can I log in before verification?",
+        "answer": "No, you can not log in before the verification is complete."
+    }
+}
+
+]

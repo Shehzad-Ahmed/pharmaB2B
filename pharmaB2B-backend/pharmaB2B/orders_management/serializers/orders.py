@@ -36,7 +36,7 @@ class OrdersSerializer(serializers.Serializer):
                 total_price += product_price
                 product_stocks = product.productstocks_set.filter(status=constants.PACKAGE_STATUS_IN_STOCK)
                 if product_stocks.count() < quantity:
-                    raise BadRequest(f"Please revise quantity for product: {product.id}")
+                    raise BadRequest(f"Please revise quantity for product: {product.name} {product.type}")
                 product_stocks = product_stocks[:quantity]
                 for product_stock in product_stocks:
                     OrderStocks.objects.create(
@@ -45,8 +45,8 @@ class OrdersSerializer(serializers.Serializer):
                     )
                     product_stock.status = constants.PACKAGE_STATUS_BOOKED
                     product_stock.save()
-            order.price = total_price
-            order.gst = total_gst
+            order.total_price = total_price
+            order.total_gst = total_gst
             order.save()
             return order
 

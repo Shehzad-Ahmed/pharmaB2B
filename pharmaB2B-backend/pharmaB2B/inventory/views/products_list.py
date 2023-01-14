@@ -1,3 +1,4 @@
+from django.db.models import Count
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
@@ -14,22 +15,6 @@ class ProductsListViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        return super().get_queryset().filter(deleted=False)
-
-"""
-Goal: 
-1st Achieve the overall required features.
-Go through the Course again.
-Match studied concepts and map in the solution.
-prepare the report.
-Improve the application if time allows.
-
-Steps:
-implement add to cart API.  
-implement checkout API.
-
-Create template of application with React.  
-Create dashboard page.
-
-Create set password page.
-"""
+        return super().get_queryset().filter(deleted=False).annotate(
+            count=Count("productstocks")
+        ).order_by("-count")

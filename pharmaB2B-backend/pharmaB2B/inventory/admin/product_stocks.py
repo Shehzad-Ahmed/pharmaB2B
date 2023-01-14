@@ -6,8 +6,8 @@ class ProductStocksAdmin(admin.ModelAdmin):
     search_fields = (
         "barcode_number",
         "stock__product__name",
-        "batch_number",
-        "manufacturer__name",
+        "stock__batch_number",
+        "product__manufacturer__name",
     )
 
     list_filter = ("status", )

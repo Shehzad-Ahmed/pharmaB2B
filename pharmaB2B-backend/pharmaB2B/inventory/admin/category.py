@@ -1,11 +1,11 @@
 from django.contrib import admin
 
 
-class SuppliersAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
 
-    search_fields = ("name", "contact_no", "email")
+    search_fields = ("name", )
 
-    list_display = ("name", "contact_no", "email", "deleted")
+    list_display = ("name", "deleted")
 
     list_editable = ("deleted",)
 

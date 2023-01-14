@@ -11,6 +11,8 @@ class Products(Base):
 
     type = models.TextField()
 
+    generic = models.TextField(null=False, blank=True, default="")
+
     packaging_type = models.TextField()
 
     units_per_package = models.IntegerField(null=False)
@@ -22,6 +24,8 @@ class Products(Base):
     gst = models.FloatField(default=20)
 
     primary_image = models.ImageField()
+
+    category = models.ForeignKey("inventory.Category", on_delete=models.DO_NOTHING, null=False, default=None)
 
     class Meta:
 
